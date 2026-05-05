@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <base href="https://cdn.jsdelivr.net/gh/gn-math/gn-math.github.io@main/">
-  <link rel="icon" type="image/png" href="https://codehs.com/uploads/84799a0bb8e09668879b73acd5e7abaa">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://codehs.com/uploads/84799a0bb8e09668879b73acd5e7abaa">
+  <link rel="icon" type="image/png" href="https://codehs.com/uploads/b9084e2547f1923caa433b97f16c89d1">
   <link rel="apple-touch-icon" href="https://codehs.com/uploads/84799a0bb8e09668879b73acd5e7abaa">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- Lucide icons via CDN -->
@@ -23,6 +22,16 @@
   <meta property="twitter:image" content="https://codehs.com/uploads/84799a0bb8e09668879b73acd5e7abaa">
 
   <style>
+
+	.summary-content-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.summary-content-wrap::marker {
+  display: inline;
+}
+
     @keyframes slideDown {
       from { transform: translateY(-100px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
@@ -1000,7 +1009,17 @@
     </button>
     <div class="category-nav">
       <button class="category-btn active" onclick="filterByCategory('all', event)">All Games</button>
+      <button class="category-btn" onclick="filterByCategory('popular', event)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"/></svg>
+        Popular
       </button>
+      <button class="category-btn" onclick="filterByCategory('story-network', event)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        Story Network
+      </button>
+      <button class="category-btn" onclick="filterByCategory('random', event)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+        Random
       </button>
       <button class="category-btn" onclick="filterByCategory('fnf', event)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
@@ -1027,6 +1046,11 @@
 
 	<div id="notifications-banner-container"></div>
 
+    <div style="background:rgba(255,200,0,0.12);border:1px solid rgba(255,200,0,0.35);border-radius:12px;padding:0.75rem 1.2rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.7rem;font-size:0.92rem;color:var(--text-color);">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffc800" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span><b>Tip:</b> If a game doesn't launch, click <b>"Open in Tab"</b> in the game viewer to open it in a new tab.</span>
+    </div>
+
     <details id="favoriteZonesWrapper" open>
       <summary>Favorites</summary>
       <div id="favoriteZonesList" class="zone-container">
@@ -1037,16 +1061,18 @@
     <hr style="margin:2rem 0; border-color:rgba(255,255,255,0.08);">
 
     <details id="recentZonesWrapper" open>
-      <summary style="display:flex;justify-content:space-between;align-items:center;">
-        <span class="summary-text">Recently Played</span>
-        <button class="clear-recent" onclick="clearRecent(); event.stopPropagation();">
-          Clear Recent
-        </button>
-      </summary>
-      <div id="recentZonesList" class="zone-container">
-        <p style="text-align:center; padding:2rem;">No recently played games.</p>
-      </div>
-    </details>
+  <summary>
+    <span style="display:inline-flex; justify-content:space-between; align-items:center; width:calc(100% - 1.5rem);">
+      <span>Recently Played</span>
+      <button class="clear-recent" onclick="clearRecent(); event.stopPropagation();">
+        Clear Recent
+      </button>
+    </span>
+  </summary>
+  <div id="recentZonesList" class="zone-container">
+    <p style="text-align:center; padding:2rem;">No recently played games.</p>
+  </div>
+</details>
 
     <hr style="margin:2rem 0; border-color:rgba(255,255,255,0.08);">
 
@@ -1086,7 +1112,7 @@
         </button>
       </div>
     </div>
-    <iframe id="zoneFrame"></iframe>
+    <iframe id="zoneFrame" style="display:none;"></iframe>
   </div>
 
   <div id="popupOverlay">
@@ -1126,18 +1152,24 @@
     ];
 
     // ---- BLOCKED NAMES (case-insensitive substring match) ----
-    const BLOCKED_NAMES = ['epstein', 'five nights at last breath', '[!]', 'bad parenting'];
-
+    const BLOCKED_NAMES = ['epstein', 'five nights at last breath', '[!]', 'bad parenting', '1 date danger', 'code editor'];
+    // Games that should only appear as Story Network versions
+    const BLOCKED_EXACT = ['bad time simulator', 'basket random', 'polytrack', 'poly track'];
     function isBlocked(name) {
       const lower = name.toLowerCase();
-      return BLOCKED_NAMES.some(b => lower.includes(b));
+      // Block by substring
+      if (BLOCKED_NAMES.some(b => lower.includes(b))) return true;
+      // Block non-SN exact matches (SN versions have "story network" in the name)
+      if (BLOCKED_EXACT.some(b => (lower === b || lower.includes(b)) && !lower.includes('story network'))) return true;
+      return false;
     }
 
     // Theme configuration (epstein, kirk, elias removed)
     const themeConfig = {
       default: {
         name: "Story Network GN Math",
-        logo: "https://codehs.com/uploads/84799a0bb8e09668879b73acd5e7abaa"
+        logo: "https://codehs.com/uploads/84799a0bb8e09668879b73acd5e7abaa",
+        favicon: "https://codehs.com/uploads/b9084e2547f1923caa433b97f16c89d1"
       },
       library: {
         name: "The Library GN Math",
@@ -1297,7 +1329,7 @@
       if (logoImg) { logoImg.src = config.logo; logoImg.alt = config.name + " Logo"; }
       if (headerText) headerText.textContent = config.name;
       document.title = config.name;
-      cloakIcon(config.logo);
+      cloakIcon(config.favicon || config.logo);
     }
 
     function updateThemeUI() {
@@ -1407,7 +1439,7 @@
     const STORY_NETWORK_GAMES = [
       {
         id: 'sn-deltarune',
-        name: 'Deltarune (Story Network)	(open in new tab)',
+        name: 'Deltarune (Story Network)',
         author: 'Camzzz',
         url: 'internal',
         fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzdeltarune.html',
@@ -1421,6 +1453,51 @@
         url: 'internal',
         fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzbalatro.html',
         cover: 'https://codehs.com/uploads/c8650a28ce2b5ae73ded93cff77895e2',
+        storyNetwork: true
+      },
+      {
+        id: 'sn-badtimesim',
+        name: 'Bad Time Simulator (Story Network)',
+        author: 'Camzzz',
+        url: 'internal',
+        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzbadtimesim.html',
+        cover: 'https://codehs.com/uploads/19b9e206f30bf5a553de2fb3227d2d7f',
+        storyNetwork: true
+      },
+      {
+        id: 'sn-basketrandom',
+        name: 'Basket Random (Story Network)',
+        author: 'Camzzz',
+        url: 'internal',
+        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzbasketrandom.html',
+        cover: 'https://codehs.com/uploads/221507e0b9f72439c82592edb064afc7',
+        storyNetwork: true
+      },
+      {
+        id: 'sn-polytrack',
+        name: 'Polytrack (Story Network)',
+        author: 'Camzzz',
+        url: 'internal',
+        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzpolytrack.html',
+        cover: 'https://codehs.com/uploads/ac85f0bc0cd4678847805c84b3e24a15',
+        storyNetwork: true
+      },
+      {
+        id: 'sn-inscryption',
+        name: 'Inscryption (Story Network)',
+        author: 'Camzzz',
+        url: 'internal',
+        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzinscryption.html',
+        cover: 'https://codehs.com/uploads/d01c8f5f6e6d71178243e377c6db7f9f',
+        storyNetwork: true
+      }
+	,{
+        id: 'sn-undertale',
+        name: 'Undertale (Story Network)',
+        author: 'Camzzz',
+        url: 'internal',
+        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@23bc89f/camzzzundertale.html',
+        cover: 'https://codehs.com/uploads/47d4b4fa8f463b2f9159033576422044',
         storyNetwork: true
       }
     ];
@@ -1515,14 +1592,13 @@
       zoneItem.className = "zone-item";
       zoneItem.onclick = () => openZone(file);
 
-      if (mode !== "recent") {
-        const star = document.createElement("div");
-        star.className = "favorite-star";
-        star.innerHTML = `<svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"></polygon></svg>`;
-        if (getFavorites().includes(file.id)) star.classList.add("active");
-        star.onclick = (e) => { e.stopPropagation(); toggleFavorite(file.id, star); };
-        zoneItem.appendChild(star);
-      }
+      // Show favorite star on all modes (including recent)
+      const star = document.createElement("div");
+      star.className = "favorite-star";
+      star.innerHTML = `<svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"></polygon></svg>`;
+      if (getFavorites().includes(file.id)) star.classList.add("active");
+      star.onclick = (e) => { e.stopPropagation(); toggleFavorite(file.id, star); };
+      zoneItem.appendChild(star);
 
       if (file.storyNetwork) {
         const badge = document.createElement("div");
@@ -1579,20 +1655,28 @@
 
     function filterZones() {
       const query = searchBar.value.toLowerCase();
-      const filtered = zones.filter(z => z.name.toLowerCase().includes(query) && !isBlocked(z.name));
       const favoritesSection = document.getElementById('favoriteZonesWrapper');
       const recentSection = document.getElementById('recentZonesWrapper');
       const dividers = document.querySelectorAll('main > hr');
+
       if (query.length > 0) {
+        // While searching: filter within the current category
         favoritesSection.style.display = 'none';
         recentSection.style.display = 'none';
         dividers.forEach(hr => hr.style.display = 'none');
+        const filtered = zones.filter(z => z.name.toLowerCase().includes(query) && !isBlocked(z.name));
+        displayZones(filtered);
       } else {
-        favoritesSection.style.display = 'block';
-        recentSection.style.display = 'block';
-        dividers.forEach(hr => hr.style.display = 'block');
+        // Search cleared: restore the active category view
+        filterByCategory(currentCategory, null);
+        // Re-apply active class to the correct button
+        document.querySelectorAll('.category-btn').forEach(btn => {
+          const onclick = btn.getAttribute('onclick') || '';
+          if (onclick.includes("'" + currentCategory + "'")) {
+            btn.classList.add('active');
+          }
+        });
       }
-      displayZones(filtered);
     }
 
     function openZone(file) {
@@ -1603,36 +1687,35 @@
         return;
       }
       document.getElementById('zoneName').textContent = "Loading...";
-        zoneFrame.style.opacity = "0.3";
-        zoneFrame.style.pointerEvents = "none";
-        document.getElementById("zoneLoading").style.display = "block";
-        fetch(fetchTarget + "?t=" + Date.now())
-          .then(r => r.text())
-          .then(html => {
-            if (zoneFrame.contentDocument === null) {
-              zoneFrame = document.createElement("iframe");
-              zoneFrame.id = "zoneFrame";
-              zoneViewer.appendChild(zoneFrame);
-            }
-            zoneFrame.contentDocument.open();
-            zoneFrame.contentDocument.write(html);
-            zoneFrame.contentDocument.close();
-            zoneFrame.style.opacity = "1";
-            zoneFrame.style.pointerEvents = "auto";
-            document.getElementById("zoneLoading").style.display = "none";
-            document.getElementById('zoneName').textContent = file.name;
-            document.getElementById('zoneId').textContent = file.id;
-            document.getElementById('zoneAuthor').textContent = "by " + file.author;
-            if (file.authorLink) document.getElementById('zoneAuthor').href = file.authorLink;
-            zoneViewer.style.display = "block";
-            const newURL = new URL(window.location);
-            newURL.searchParams.set('id', file.id);
-            history.pushState(null, '', newURL.toString());
-          })
-          .catch(err => {
-            document.getElementById("zoneLoading").style.display = "none";
-            alert("Failed to load zone: " + err);
-          });
+      // Always create a fresh iframe (fixes the "second game won't load" bug)
+      if (zoneFrame) { try { zoneViewer.removeChild(zoneFrame); } catch(e) {} }
+      zoneFrame = document.createElement("iframe");
+      zoneFrame.id = "zoneFrame";
+      zoneFrame.style.cssText = "flex-grow:1;border:none;width:94%;height:92%;margin:20px auto;border-radius:16px;box-shadow:var(--shadow);background:#000;opacity:0.3;pointer-events:none;";
+      zoneViewer.appendChild(zoneFrame);
+      document.getElementById("zoneLoading").style.display = "block";
+      fetch(fetchTarget + "?t=" + Date.now())
+        .then(r => r.text())
+        .then(html => {
+          zoneFrame.contentDocument.open();
+          zoneFrame.contentDocument.write(html);
+          zoneFrame.contentDocument.close();
+          zoneFrame.style.opacity = "1";
+          zoneFrame.style.pointerEvents = "auto";
+          document.getElementById("zoneLoading").style.display = "none";
+          document.getElementById('zoneName').textContent = file.name;
+          document.getElementById('zoneId').textContent = file.id;
+          document.getElementById('zoneAuthor').textContent = "by " + file.author;
+          if (file.authorLink) document.getElementById('zoneAuthor').href = file.authorLink;
+          zoneViewer.style.display = "flex";
+          const newURL = new URL(window.location);
+          newURL.searchParams.set('id', file.id);
+          history.pushState(null, '', newURL.toString());
+        })
+        .catch(err => {
+          document.getElementById("zoneLoading").style.display = "none";
+          alert("Failed to load zone: " + err);
+        });
     }
 
     function aboutBlank() {
@@ -1646,12 +1729,8 @@
 
     function closeZone() {
       zoneViewer.style.display = "none";
-      zoneFrame.src = "about:blank";
-      try {
-        zoneFrame.contentDocument.open();
-        zoneFrame.contentDocument.write("");
-        zoneFrame.contentDocument.close();
-      } catch(e) {}
+      try { zoneViewer.removeChild(zoneFrame); } catch(e) {}
+      zoneFrame = null;
       const url = new URL(window.location);
       url.searchParams.delete('id');
       history.pushState(null, '', url.toString());
@@ -1702,10 +1781,12 @@
     }
 
     function cloakIcon(url) {
-      const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
+      const trimmed = url.trim() || "https://codehs.com/uploads/84799a0bb8e09668879b73acd5e7abaa";
+      let link = document.querySelector("link[rel~='icon']");
+      if (!link) { link = document.createElement('link'); document.head.appendChild(link); }
       link.rel = "icon";
-      link.href = url.trim() || "favicon.png";
-      document.head.appendChild(link);
+      link.type = "image/png";
+      link.href = trimmed;
     }
 
     function cloakName(string) { document.title = string.trim() || "Home"; }
@@ -1830,6 +1911,8 @@
             Import Data
           </button>
         </div>
+        <hr style="border-color:var(--input-border); margin: 1rem 0 0.5rem;">
+        <p style="font-size:0.75rem; opacity:0.55; text-align:center; margin:0; font-weight:600;">Most of the Games on This Website are Hosted by GN-Math</p>
       `;
       document.getElementById('popupOverlay').style.display = "flex";
     });
@@ -1903,10 +1986,27 @@
       document.getElementById('categoryNavWrapper').classList.toggle('collapsed');
     }
 
+    // Curated popular game names
+    // Popular tab: exact name matches only (case-insensitive)
+    const POPULAR_GAMES = [
+      'deltarune', 'balatro', 'scampton the great', 'bad time simulator (story network)',
+      'rocket goal.io', 'bacon may die', 'basket random (story network)', 'cookie clicker',
+      'beatblock', 'your only move is hustle',
+      'retro bowl', 're:run', 'karlson', 'minecraft 1.8.8',
+      'friday night funkin', 'ovo', 'bloons td 4', 'cluster rush',
+      'polytrack (story network)', 'line rider', 'snow rider 3d', 'tube jumpers',
+      'geometry dash', 'ultrakill'
+    ];
+
+    function isPopular(name) {
+      const lower = name.toLowerCase().trim();
+      return POPULAR_GAMES.some(p => lower === p);
+    }
+
     function filterByCategory(category, event) {
       currentCategory = category;
       document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-      if (event && event.target) event.target.classList.add('active');
+      if (event && event.target) event.target.closest('.category-btn').classList.add('active');
 
       const favoritesSection = document.getElementById('favoriteZonesWrapper');
       const recentSection = document.getElementById('recentZonesWrapper');
@@ -1921,33 +2021,30 @@
         dividers.forEach(hr => hr.style.display = 'none');
       }
 
-      const storyNetworkIds = ['lib','raz','sgc','zicon'];
       let filteredZones = [];
 
       if (category === 'all') {
-        filteredZones = zones.filter(z => !storyNetworkIds.includes(z.id) && !isBlocked(z.name));
+        filteredZones = zones.filter(z => !isBlocked(z.name));
       } else if (category === 'story-network') {
-        filteredZones = zones.filter(z => storyNetworkIds.includes(z.id) && !isBlocked(z.name));
+        filteredZones = zones.filter(z => z.storyNetwork && !isBlocked(z.name));
       } else if (category === 'popular') {
-        const sortedByPop = zones
-          .filter(z => !storyNetworkIds.includes(z.id) && !isBlocked(z.name) && popularityData[z.id] > 0)
-          .sort((a,b) => (popularityData[b.id]||0) - (popularityData[a.id]||0))
-          .slice(0, 15);
-        filteredZones = sortedByPop;
+        filteredZones = zones.filter(z => !isBlocked(z.name) && isPopular(z.name));
+      } else if (category === 'random') {
+        filteredZones = zones.filter(z => !isBlocked(z.name) && z.name.toLowerCase().includes('random'));
       } else if (category === 'fnf') {
-        filteredZones = zones.filter(z => !storyNetworkIds.includes(z.id) && !isBlocked(z.name) &&
+        filteredZones = zones.filter(z => !isBlocked(z.name) &&
           (z.name.toLowerCase().includes('fnf') || z.name.toLowerCase().includes('friday night funkin')));
       } else if (category === 'fnaf') {
-        filteredZones = zones.filter(z => !storyNetworkIds.includes(z.id) && !isBlocked(z.name) &&
+        filteredZones = zones.filter(z => !isBlocked(z.name) &&
           (z.name.toLowerCase().includes('fnaf') || z.name.toLowerCase().includes('five nights at')));
       } else if (category === 'minecraft') {
-        filteredZones = zones.filter(z => !storyNetworkIds.includes(z.id) && !isBlocked(z.name) &&
+        filteredZones = zones.filter(z => !isBlocked(z.name) &&
           z.name.toLowerCase().includes('minecraft'));
       } else if (category === 'toby-fox') {
         const tobyKeywords = ['undertale', 'deltarune', 'underwheels', 'deltatraveler', 'bad monday simulator', 'bad time simulator', 'scampton the great', 'undertale yellow', 'worst time simulator'];
         const fnfKeywords = ['fnf', 'friday night funkin'];
         filteredZones = zones.filter(z => {
-          if (storyNetworkIds.includes(z.id) || isBlocked(z.name)) return false;
+          if (isBlocked(z.name)) return false;
           const name = z.name.toLowerCase();
           const isFNF = fnfKeywords.some(k => name.includes(k));
           if (isFNF) return false;
@@ -1958,7 +2055,7 @@
       displayZones(filteredZones);
       const summaryText = {
         'all': 'All Games', 'story-network': 'Story Network', 'popular': 'Popular',
-        'fnf': 'FNF', 'fnaf': 'FNAF', 'minecraft': 'Minecraft', 'toby-fox': 'Toby Fox'
+        'random': 'Random', 'fnf': 'FNF', 'fnaf': 'FNAF', 'minecraft': 'Minecraft', 'toby-fox': 'Toby Fox'
       }[category] || 'Games';
       document.getElementById("allZonesWrapper")
         .querySelector("summary")
