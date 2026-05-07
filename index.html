@@ -5,13 +5,10 @@
   <link rel="icon" type="image/png" href="https://codehs.com/uploads/b9084e2547f1923caa433b97f16c89d1">
   <link rel="apple-touch-icon" href="https://codehs.com/uploads/84799a0bb8e09668879b73acd5e7abaa">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- Lucide icons via CDN -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Story Network GN Math</title>
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Story Network GN Math">
   <meta property="og:description" content="Project of Story Network! Play directly in your browser!">
@@ -22,15 +19,11 @@
   <meta property="twitter:image" content="https://codehs.com/uploads/84799a0bb8e09668879b73acd5e7abaa">
 
   <style>
-
-	.summary-content-wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.summary-content-wrap::marker {
-  display: inline;
-}
+    .summary-content-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     @keyframes slideDown {
       from { transform: translateY(-100px); opacity: 0; }
@@ -131,7 +124,7 @@
       box-shadow: 0 3px 8px var(--primary-glow);
     }
 
-    /* ---------- CONTROL BUTTONS (no ripple) ---------- */
+    /* ---------- CONTROL BUTTONS ---------- */
     .control-button {
       background: var(--primary-color);
       color: white;
@@ -156,30 +149,30 @@
     }
     .control-button:active { transform: translateY(-1px); }
     .control-buttons .control-button { margin-right: 0.8rem; }
-.control-buttons {
-    order: 3;
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
+    .control-buttons {
+      order: 3;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-#notifBtn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    #notifBtn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-#notifDot {
-    width: 13px !important;
-    height: 13px !important;
-    top: 4px !important;
-    right: 4px !important;
-}
+    #notifDot {
+      width: 13px !important;
+      height: 13px !important;
+      top: 4px !important;
+      right: 4px !important;
+    }
 
     /* ---------- CATEGORY NAV BAR ---------- */
     .category-nav-wrapper {
@@ -250,6 +243,19 @@
       border-color: var(--primary-color);
       box-shadow: 0 0 20px var(--primary-glow);
     }
+    /* Category count badge */
+    .cat-count {
+      font-size: 0.75rem;
+      background: rgba(255,255,255,0.2);
+      border-radius: 9999px;
+      padding: 0.1rem 0.45rem;
+      font-weight: 700;
+      min-width: 20px;
+      text-align: center;
+    }
+    .category-btn.active .cat-count {
+      background: rgba(255,255,255,0.3);
+    }
 
     /* ---------- CSS VARIABLES ---------- */
     :root {
@@ -275,7 +281,6 @@
       --bg-gradient-2: #0a0a0a;
     }
 
-    /* Cyberpunk Theme */
     body[data-theme="cyberpunk"] {
       --primary-color: #ff00ff;
       --primary-glow: rgba(255,0,255,0.5);
@@ -297,7 +302,6 @@
       --bg-gradient-2: #0a0a0a;
     }
 
-    /* Matrix Theme */
     body[data-theme="matrix"] {
       --primary-color: #00cc00;
       --primary-glow: rgba(0,204,0,0.4);
@@ -319,7 +323,6 @@
       --bg-gradient-2: #0a0a0a;
     }
 
-    /* Sunset Theme */
     body[data-theme="sunset"] {
       --primary-color: #ff6b35;
       --primary-glow: rgba(255,107,53,0.4);
@@ -341,7 +344,6 @@
       --bg-gradient-2: #0a0a0a;
     }
 
-    /* Custom Theme: Lebron da Goat (Purple) */
     body[data-custom-theme="lebron"] {
       --primary-color: #552583;
       --primary-glow: rgba(85,37,131,0.5);
@@ -363,7 +365,6 @@
       --bg-gradient-2: #0a0a0a;
     }
 
-    /* Custom Theme: Steam (Blue-Gray) */
     body[data-custom-theme="steam"] {
       --primary-color: #66c0f4;
       --primary-glow: rgba(102,192,244,0.5);
@@ -385,7 +386,6 @@
       --bg-gradient-2: #0a0a0a;
     }
 
-    /* Custom Theme: Securly (White/Blue) */
     body[data-custom-theme="securly"] {
       --primary-color: #007bff;
       --primary-glow: rgba(0,123,255,0.5);
@@ -408,7 +408,6 @@
       --favorites-bg: rgba(0,123,255,0.08);
     }
 
-    /* Custom Theme: IXL Style */
     body[data-custom-theme="ixl"] {
       --primary-color: #4eb230;
       --primary-glow: rgba(78,178,48,0.5);
@@ -430,7 +429,6 @@
       --bg-gradient-2: #0a0a0a;
     }
 
-    /* Custom Theme: Camzzz (Modern Purple) */
     body[data-custom-theme="camzzz"] {
       --primary-color: #AA00FF;
       --primary-glow: rgba(170,0,255,0.5);
@@ -452,7 +450,6 @@
       --bg-gradient-2: #0a0a0a;
     }
 
-    /* The Library theme */
     body[data-custom-theme="library"] {
       --primary-color: #cc0000;
       --primary-glow: rgba(204,0,0,0.5);
@@ -474,7 +471,6 @@
       --bg-gradient-2: #0a0a0a;
     }
 
-    /* Light-theme text fix: anything with a light background needs dark text */
     body[data-custom-theme="securly"] #searchBar,
     body[data-custom-theme="securly"] #searchBar::placeholder,
     body[data-custom-theme="securly"] .category-btn,
@@ -487,7 +483,6 @@
     body[data-custom-theme="securly"] #searchBar::placeholder { color: #6c757d; }
     body[data-custom-theme="securly"] .category-btn { color: #1c1e21; }
 
-    /* ---- GLOBAL BASE STYLES ---- */
     *,*::before,*::after {
       font-family: var(--font-family) !important;
       box-sizing: border-box;
@@ -505,7 +500,7 @@
       min-height: 100vh;
     }
 
-    .bg-particles { display: none; } /* removed particle animation */
+    .bg-particles { display: none; }
 
     h1,h2,h3,h4,h5,h6,summary,button,
     .zone-item button,#popupTitle,#zoneName,.logo,
@@ -526,27 +521,27 @@
       transition: all 0.5s ease;
     }
     .header-content {
-    max-width: 100%;
-    margin: 0;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 1rem;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    padding: 0 1rem;
-}
+      max-width: 100%;
+      margin: 0;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 0 1rem;
+    }
     .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1.6rem;
-    font-weight: 900;
-    text-shadow: 0 0 20px var(--primary-glow);
-    transition: transform 0.3s ease, filter 0.3s ease;
-    order: 1;
-}
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.6rem;
+      font-weight: 900;
+      text-shadow: 0 0 20px var(--primary-glow);
+      transition: transform 0.3s ease, filter 0.3s ease;
+      order: 1;
+    }
     .logo:hover { transform: scale(1.05); filter: drop-shadow(0 0 15px var(--primary-color)); }
     .logo-img {
       height: 48px;
@@ -555,17 +550,16 @@
     }
     .logo:hover .logo-img { transform: rotate(360deg); }
 
-    /* ---------- SEARCH BAR - clean redesign ---------- */
     .search-container {
-    flex: 1;
-    min-width: 260px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    order: 2;
-    margin-left: 1rem;
-	margin-RIGHT: 1rem;
-}
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      order: 2;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
     .search-icon {
       position: absolute;
       left: 16px;
@@ -612,10 +606,11 @@
     }
     .zone-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fill, minmax(var(--card-min-width, 200px), 1fr));
+      gap: var(--card-gap, 28px);
       margin-top: 1.2rem;
     }
+
     .zone-item {
       background: var(--card-bg);
       border-radius: 16px;
@@ -660,6 +655,18 @@
     }
     .play-count svg { width: 11px; height: 11px; fill: currentColor; }
     .zone-item button:hover { background: var(--input-border); }
+
+    /* Last played timestamp on recent cards */
+    .last-played-label {
+      font-size: 0.7rem;
+      opacity: 0.55;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 2px;
+    }
+    .last-played-label svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2; }
 
     /* Zone viewer */
     #zoneViewer {
@@ -952,58 +959,147 @@
       border: 1px solid #333; resize: vertical;
     }
 
-    /* Lucide icon normalization */
-    .icon-btn-label {
-      display: inline-flex; align-items: center; gap: 0.4rem;
+    /* ================= PERFORMANCE MODE ================= */
+    .performance-mode *,
+    .performance-mode *::before,
+    .performance-mode *::after {
+      animation: none !important;
+      animation-duration: 0s !important;
+      animation-delay: 0s !important;
+      transition: none !important;
+      transition-duration: 0s !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      filter: none !important;
+      text-shadow: none !important;
+      box-shadow: none !important;
+      scroll-behavior: auto !important;
+      will-change: auto !important;
+    }
+    .performance-mode .zone-item:hover {
+      transform: none !important;
+      box-shadow: none !important;
+      border-color: rgba(255,255,255,0.05) !important;
+    }
+    .performance-mode .logo:hover,
+    .performance-mode .logo:hover .logo-img {
+      transform: none !important;
+      filter: none !important;
+    }
+    .performance-mode summary:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    .performance-mode .control-button:hover,
+    .performance-mode .zone-controls button:hover,
+    .performance-mode .category-btn:hover,
+    .performance-mode .footer-links a:hover,
+    .performance-mode .footer-links label:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    .performance-mode header {
+      box-shadow: none !important;
+    }
+    .performance-mode img {
+      image-rendering: optimizeSpeed !important;
+    }
+    .performance-mode .star-particle {
+      display: none !important;
+    }
+    .performance-mode .color-option:hover,
+    .performance-mode .theme-option:hover {
+      transform: none !important;
+      box-shadow: none !important;
     }
 
-	/* ================= PERFORMANCE MODE ================= */
+    .performance-setting {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .performance-toggle {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+      font-weight: 700;
+    }
 
-.performance-mode *,
-.performance-mode *::before,
-.performance-mode *::after {
-    animation: none !important;
-    transition: none !important;
-    backdrop-filter: none !important;
-    filter: none !important;
-    text-shadow: none !important;
-    box-shadow: none !important;
-    scroll-behavior: auto !important;
-}
+    /* Card size CSS vars */
+    :root {
+      --card-min-width: 200px;
+      --card-gap: 28px;
+    }
 
-.performance-mode .zone-item:hover {
-    transform: none !important;
-}
+    .surprise-btn {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-glow));
+      color: white;
+      border: none;
+      border-radius: 9999px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px var(--primary-glow);
+    }
+    .surprise-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 6px 20px var(--primary-glow);
+    }
 
-.performance-mode img {
-    image-rendering: optimizeSpeed !important;
-}
-
-.performance-mode iframe {
-    will-change: auto !important;
-}
-
-.performance-mode .logo:hover,
-.performance-mode .logo:hover .logo-img {
-    transform: none !important;
-    filter: none !important;
-}
-
-.performance-setting {
-    margin-top: 20px;
-    padding: 16px;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-}
-
-.performance-toggle {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 12px;
-    font-weight: 700;
-}
+    /* Site settings toggle rows */
+    .setting-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1rem;
+      background: var(--input-bg);
+      border-radius: 12px;
+      border: 1px solid var(--input-border);
+      margin-bottom: 0.75rem;
+    }
+    .setting-row-label {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .setting-row-label span { font-weight: 700; font-size: 0.95rem; }
+    .setting-row-label small { opacity: 0.6; font-size: 0.78rem; font-weight: 500; }
+    .toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.15);
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: 3px;
+      top: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.25s;
+    }
+    .toggle-switch input:checked + .toggle-slider { background: var(--primary-color); }
+    .toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
 
     @media (max-width: 768px) {
       .header-content { grid-template-columns: auto 1fr auto; gap: 0.5rem; }
@@ -1013,11 +1109,11 @@
       .zone-controls button { width: 100%; }
     }
   </style>
+<base target="_blank">
 </head>
 
 <body data-theme="default">
 
-  <!-- bg-particles div kept for JS but hidden via CSS -->
   <div class="bg-particles" id="bgParticles"></div>
 
   <header>
@@ -1055,35 +1151,35 @@
         <polyline points="6 9 12 15 18 9"></polyline>
       </svg>
     </button>
-    <div class="category-nav">
-      <button class="category-btn active" onclick="filterByCategory('all', event)">All Games</button>
+    <div class="category-nav" id="categoryNav">
+      <button class="category-btn active" onclick="filterByCategory('all', event)">All Games <span class="cat-count" id="count-all">…</span></button>
       <button class="category-btn" onclick="filterByCategory('popular', event)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"/></svg>
-        Popular
+        Popular <span class="cat-count" id="count-popular">…</span>
       </button>
       <button class="category-btn" onclick="filterByCategory('story-network', event)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        Story Network
+        Story Network <span class="cat-count" id="count-story-network">…</span>
       </button>
       <button class="category-btn" onclick="filterByCategory('random', event)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
-        Random
+        Random <span class="cat-count" id="count-random">…</span>
       </button>
       <button class="category-btn" onclick="filterByCategory('fnf', event)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-        FNF
+        FNF <span class="cat-count" id="count-fnf">…</span>
       </button>
       <button class="category-btn" onclick="filterByCategory('fnaf', event)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
-        FNAF
+        FNAF <span class="cat-count" id="count-fnaf">…</span>
       </button>
       <button class="category-btn" onclick="filterByCategory('minecraft', event)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 2v20M16 2v20M2 8h20M2 16h20"/></svg>
-        Minecraft
+        Minecraft <span class="cat-count" id="count-minecraft">…</span>
       </button>
       <button class="category-btn" onclick="filterByCategory('toby-fox', event)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-        Toby Fox
+        Toby Fox <span class="cat-count" id="count-toby-fox">…</span>
       </button>
     </div>
   </div>
@@ -1092,13 +1188,22 @@
   <div id="mainContent">
   <main>
 
-	<div id="notifications-banner-container"></div>
+    <div id="notifications-banner-container"></div>
 
     <div style="background:linear-gradient(135deg,rgba(255,200,0,0.13),rgba(255,160,0,0.08));border:1px solid rgba(255,200,0,0.4);border-radius:14px;padding:0.85rem 1.3rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.9rem;font-size:0.92rem;color:var(--text-color);box-shadow:0 2px 12px rgba(255,200,0,0.1);">
       <div style="background:rgba(255,200,0,0.18);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1.5px solid rgba(255,200,0,0.45);">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffc800" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 3.1-1.7 5.5-4 6.7V17a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.3C6.7 14.5 5 12.1 5 9a7 7 0 0 1 7-7z"/><line x1="10" y1="21" x2="14" y2="21"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
       </div>
       <span><b style="color:#ffc800;">Tip:</b> If a game doesn't launch, click <b>"Open in Tab"</b> in the game viewer to open it in a new tab.</span>
+    </div>
+
+    <!-- Toolbar row: view toggle + surprise me -->
+    <div style="display:flex; gap:0.75rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;">
+      
+      <button class="surprise-btn" onclick="surpriseMe()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+        Surprise Me!
+      </button>
     </div>
 
     <details id="favoriteZonesWrapper" open>
@@ -1111,18 +1216,18 @@
     <hr style="margin:2rem 0; border-color:rgba(255,255,255,0.08);">
 
     <details id="recentZonesWrapper" open>
-  <summary>
-    <span style="display:inline-flex; justify-content:space-between; align-items:center; width:calc(100% - 1.5rem);">
-      <span>Recently Played</span>
-      <button class="clear-recent" onclick="clearRecent(); event.stopPropagation();">
-        Clear Recent
-      </button>
-    </span>
-  </summary>
-  <div id="recentZonesList" class="zone-container">
-    <p style="text-align:center; padding:2rem;">No recently played games.</p>
-  </div>
-</details>
+      <summary>
+        <span style="display:inline-flex; justify-content:space-between; align-items:center; width:calc(100% - 1.5rem);">
+          <span>Recently Played</span>
+          <button class="clear-recent" onclick="clearRecent(); event.stopPropagation();">
+            Clear Recent
+          </button>
+        </span>
+      </summary>
+      <div id="recentZonesList" class="zone-container">
+        <p style="text-align:center; padding:2rem;">No recently played games.</p>
+      </div>
+    </details>
 
     <hr style="margin:2rem 0; border-color:rgba(255,255,255,0.08);">
 
@@ -1175,120 +1280,54 @@
     </div>
   </div>
 
-<input type="file" id="importData" style="display:none;" onchange="loadData(event)">
+  <input type="file" id="importData" style="display:none;" onchange="loadData(event)">
 
   <script>
 
-	/* ================= PERFORMANCE MODE ================= */
+    /* ================= UNIFIED PERFORMANCE MODE ================= */
+    // FIX #2: Single unified system — one variable, one localStorage key, one apply function
+    let performanceMode = localStorage.getItem('perfMode') === 'true';
 
-let performanceMode =
-localStorage.getItem('performanceMode') === 'true';
-
-function applyPerformanceMode() {
-
-    document.body.classList.toggle(
-        'performance-mode',
-        performanceMode
-    );
-
-    document.querySelectorAll('img').forEach(img => {
-
-        if (performanceMode) {
-
-            img.loading = 'lazy';
-            img.decoding = 'async';
-
-        } else {
-
-            img.loading = 'eager';
-            img.decoding = 'auto';
-        }
-    });
-
-    document.querySelectorAll('video').forEach(video => {
-
-        if (performanceMode) {
-            video.pause();
-        }
-    });
-
-    if (performanceMode) {
-
-        document.querySelectorAll(
-            '.particle, .particles, .background-effect'
-        ).forEach(el => {
-            el.remove();
-        });
+    function applyPerformanceMode() {
+      document.body.classList.toggle('performance-mode', performanceMode);
+      document.querySelectorAll('img').forEach(img => {
+        img.loading = performanceMode ? 'lazy' : 'eager';
+        img.decoding = performanceMode ? 'async' : 'auto';
+      });
+      if (performanceMode) {
+        document.querySelectorAll('video').forEach(v => v.pause());
+        document.querySelectorAll('.particle, .particles, .background-effect').forEach(el => el.remove());
+      }
+      // Sync ALL toggle elements
+      document.querySelectorAll('.perf-toggle-input').forEach(el => { el.checked = performanceMode; });
     }
-}
 
-function injectPerformanceSetting() {
+    function togglePerformanceMode() {
+      performanceMode = !performanceMode;
+      localStorage.setItem('perfMode', performanceMode);
+      applyPerformanceMode();
+    }
 
-    const popupBody =
-    document.getElementById('popupBody');
+    applyPerformanceMode();
 
-    if (
-        !popupBody ||
-        document.getElementById(
-            'performance-mode-setting'
-        )
-    ) return;
-
-    const wrapper =
-    document.createElement('div');
-
-    wrapper.id =
-    'performance-mode-setting';
-
-    wrapper.className =
-    'performance-setting';
-
-    wrapper.innerHTML = `
-        <h3>Performance Mode</h3>
-
-        <p style="
-            opacity:0.8;
-            margin-bottom:12px;
-        ">
-            Disables animations and effects
-            for better FPS on slower devices.
-        </p>
-
-        <label class="performance-toggle">
-            <input
-                type="checkbox"
-                id="performanceToggle"
-            >
-
-            Enable Performance Mode
-        </label>
-    `;
-
-    popupBody.appendChild(wrapper);
-
-    const toggle =
-    document.getElementById(
-        'performanceToggle'
-    );
-
-    toggle.checked = performanceMode;
-
-    toggle.addEventListener(
-        'change',
-        () => {
-
-            performanceMode =
-            toggle.checked;
-
-            localStorage.setItem(
-                'performanceMode',
-                performanceMode
-            );
-
-            applyPerformanceMode();
-        }
-    );
-}	
+    /* ================= CARD SIZE ================= */
+    let cardSize = localStorage.getItem('cardSize') || 'default';
+    function applyCardSize(size) {
+      cardSize = size;
+      localStorage.setItem('cardSize', size);
+      const root = document.documentElement;
+      if (size === 'compact') {
+        root.style.setProperty('--card-min-width', '140px');
+        root.style.setProperty('--card-gap', '16px');
+      } else if (size === 'large') {
+        root.style.setProperty('--card-min-width', '260px');
+        root.style.setProperty('--card-gap', '36px');
+      } else {
+        root.style.setProperty('--card-min-width', '200px');
+        root.style.setProperty('--card-gap', '28px');
+      }
+    }
+    applyCardSize(cardSize);
 
     const container = document.getElementById('container');
     const zoneViewer = document.getElementById('zoneViewer');
@@ -1305,7 +1344,7 @@ function injectPerformanceSetting() {
     const NOTIFICATIONS = [
       {
         id: 'announcement-0',
-        active: false, // true = shows on main page, false = notification tab only
+        active: false,
         title: 'Story Network is Coming Back!',
         body: `Also if you didnt know we got "shut down" due to a school IT manager at the district level.<br>We will not be using Google Docs/Slides/Sheets/Forms for anything now, as those can be <b>HIGHLY</b> monitered.<br>Also This Site got <b>MASSIVE</b> Updates, so Check it Out LOL`,
         color: '#4CAF50',
@@ -1321,25 +1360,18 @@ function injectPerformanceSetting() {
       }
     ];
 
-    // ---- BLOCKED NAMES (case-insensitive substring match) ----
     const BLOCKED_NAMES = ['epstein', 'five nights at last breath', '[!]', 'bad parenting', '1 date danger', 'code editor'];
-    // Games that should only appear as Story Network versions
     const BLOCKED_EXACT = ['bad time simulator', 'basket random', 'polytrack', 'poly track'];
-    // Specifically hidden Pokemon games
     const BLOCKED_POKEMON = ['pokemon red', 'pokemon emerald', 'pokemon firered', 'pokemon fire red', 'pokemon heartgold', 'pokemon heart gold'];
     function isBlocked(name) {
       const lower = name.toLowerCase();
-      // Block by substring
       if (BLOCKED_NAMES.some(b => lower.includes(b))) return true;
-      // Block non-SN exact matches (SN versions have "story network" in the name)
       if (BLOCKED_EXACT.some(b => (lower === b || lower.includes(b)) && !lower.includes('story network'))) return true;
-      // Block specific Pokemon games by exact name match
       const trimmedLower = lower.trim();
       if (BLOCKED_POKEMON.some(b => trimmedLower === b || trimmedLower === b + ' version' || trimmedLower === b + ' (gba)' || trimmedLower === b + ' rom')) return true;
       return false;
     }
 
-    // Theme configuration (epstein, kirk, elias removed)
     const themeConfig = {
       default: {
         name: "Story Network GN Math",
@@ -1482,12 +1514,7 @@ function injectPerformanceSetting() {
       const color = document.getElementById('maker-color').value || "#0000ff";
       const id = name.toLowerCase().replace(/[^a-z0-9]/g,'');
       const rgb = hexToRgb(color);
-      const cssCode = `    /* Custom Theme: ${name} */
-    body[data-custom-theme="${id}"] {
-      --primary-color: ${color};
-      --primary-glow: rgba(${rgb.r},${rgb.g},${rgb.b},0.5);
-      ...
-    }`;
+      const cssCode = `    /* Custom Theme: ${name} */\n    body[data-custom-theme="${id}"] {\n      --primary-color: ${color};\n      --primary-glow: rgba(${rgb.r},${rgb.g},${rgb.b},0.5);\n      ...\n    }`;
       const jsCode = `      ${id}: { name: "${name}", logo: "${logo}" },`;
       const htmlCode = `            <div class="theme-option" onclick="setCustomTheme('${id}');" title="${name}" style="background:linear-gradient(135deg,#050505,${color});"><img src="${logo}" alt="${name}"></div>`;
       const fullOutput = `/* 1. Add this CSS: */\n${cssCode}\n\n/* 2. Add this to themeConfig JS: */\n${jsCode}\n\n/* 3. Add this HTML: */\n${htmlCode}`;
@@ -1560,14 +1587,35 @@ function injectPerformanceSetting() {
       updateThemeUI();
     }
 
+    /* ================= RECENTLY PLAYED + TIMESTAMPS ================= */
     function recordRecent(id) {
       let recents = JSON.parse(localStorage.getItem("recentZones") || "[]");
       recents = [id, ...recents.filter(x => x !== id)].slice(0, 12);
       localStorage.setItem("recentZones", JSON.stringify(recents));
+
       let playCounts = JSON.parse(localStorage.getItem("playCounts") || "{}");
       playCounts[id] = (playCounts[id] || 0) + 1;
       localStorage.setItem("playCounts", JSON.stringify(playCounts));
+
+      // FIX #10: store timestamp for "last played" display
+      let playTimes = JSON.parse(localStorage.getItem("playTimes") || "{}");
+      playTimes[id] = Date.now();
+      localStorage.setItem("playTimes", JSON.stringify(playTimes));
+
       updateRecentlyPlayed();
+    }
+
+    function timeAgo(ts) {
+      if (!ts) return null;
+      const seconds = Math.floor((Date.now() - ts) / 1000);
+      if (seconds < 60) return 'Just now';
+      const minutes = Math.floor(seconds / 60);
+      if (minutes < 60) return `${minutes}m ago`;
+      const hours = Math.floor(minutes / 60);
+      if (hours < 24) return `${hours}h ago`;
+      const days = Math.floor(hours / 24);
+      if (days < 7) return `${days}d ago`;
+      return `${Math.floor(days/7)}w ago`;
     }
 
     function removeFromRecentlyPlayed(id) {
@@ -1586,6 +1634,7 @@ function injectPerformanceSetting() {
 
     function updateRecentlyPlayed() {
       const recents = JSON.parse(localStorage.getItem("recentZones") || "[]");
+      const playTimes = JSON.parse(localStorage.getItem("playTimes") || "{}");
       const list = document.getElementById("recentZonesList");
       if (!list) return;
       list.innerHTML = "";
@@ -1597,6 +1646,19 @@ function injectPerformanceSetting() {
         const zone = zones.find(z => z.id == id);
         if (!zone) return;
         const card = createZoneCard(zone, "recent");
+
+        // FIX #10: Inject last played label
+        const ts = playTimes[id];
+        if (ts) {
+          const btn = card.querySelector('button');
+          if (btn) {
+            const label = document.createElement('span');
+            label.className = 'last-played-label';
+            label.innerHTML = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${timeAgo(ts)}`;
+            btn.appendChild(label);
+          }
+        }
+
         const remove = document.createElement("div");
         remove.className = "recent-remove";
         remove.innerHTML = `<svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>`;
@@ -1612,134 +1674,29 @@ function injectPerformanceSetting() {
     }
 
     const STORY_NETWORK_GAMES = [
-      {
-        id: 'sn-deltarune',
-        name: 'Deltarune (Story Network)',
-        author: 'Camzzz',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzdeltarune.html',
-        cover: 'https://codehs.com/uploads/f841ef2ba9002762ff9e22f22195cd75',
-        storyNetwork: true
-      },
-      {
-        id: 'sn-balatro',
-        name: 'Balatro (Story Network)',
-        author: 'Camzzz',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzbalatro.html',
-        cover: 'https://codehs.com/uploads/c8650a28ce2b5ae73ded93cff77895e2',
-        storyNetwork: true
-      },
-      {
-        id: 'sn-badtimesim',
-        name: 'Bad Time Simulator (Story Network)',
-        author: 'Camzzz',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@0be67ab/camzzzbadtimesim.html',
-        cover: 'https://codehs.com/uploads/19b9e206f30bf5a553de2fb3227d2d7f',
-        storyNetwork: true
-      },
-      {
-        id: 'sn-basketrandom',
-        name: 'Basket Random (Story Network)',
-        author: 'Camzzz',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@ca55311/camzzzbasketrandom.html',
-        cover: 'https://codehs.com/uploads/221507e0b9f72439c82592edb064afc7',
-        storyNetwork: true
-      },
-      {
-        id: 'sn-polytrack',
-        name: 'Polytrack (Story Network)',
-        author: 'Camzzz',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzpolytrack.html',
-        cover: 'https://codehs.com/uploads/ac85f0bc0cd4678847805c84b3e24a15',
-        storyNetwork: true
-      },
-      {
-        id: 'sn-inscryption',
-        name: 'Inscryption (Story Network)',
-        author: 'Camzzz',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzinscryption.html',
-        cover: 'https://codehs.com/uploads/d01c8f5f6e6d71178243e377c6db7f9f',
-        storyNetwork: true
-      }
-	,{
-        id: 'sn-undertale',
-        name: 'Undertale (Story Network)',
-        author: 'Camzzz',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@23bc89f/camzzzundertale.html',
-        cover: 'https://codehs.com/uploads/47d4b4fa8f463b2f9159033576422044',
-        storyNetwork: true
-      },
-      {
-        id: 'sn-amazingrope',
-        name: 'Amazing Rope Police (Diesmos)',
-        author: 'Diesmos',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzropepolice.html',
-        cover: 'https://codehs.com/uploads/ab141f977b811925f0675b921d903cf2',
-        storyNetwork: true
-      },
-      {
-        id: 'sn-undertale10th',
-        name: 'Undertale 10th Anniversary (StoryNetwork)',
-        author: 'StoryNetwork',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/undertale-10th/index.html',
-        cover: 'https://codehs.com/uploads/04543ba502de51476d4f3856bed3786c',
-        storyNetwork: true
-      },
-      {
-        id: 'sn-poke20in1',
-        name: 'Pokemon 20 in 1 (Story Network)',
-        author: 'Story Network',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@5d0e7b0/camzzzpoke20.html',
-        cover: 'https://codehs.com/uploads/7e46bba993de209841743d50fb90d39e',
-        storyNetwork: true
-      },
-      {
-        id: 'sn-papermario',
-        name: 'Paper Mario (UGS) [Story Network]',
-        author: 'Story Network',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/clpapermario.html',
-        cover: 'https://codehs.com/uploads/40f10895bcd14c3d26c81eb28f65b310',
-        storyNetwork: true
-      },
-      {
-        id: 'sn-enchantedcave2',
-        name: 'Enchanted Cave 2 (UGS) [Story Network]',
-        author: 'Story Network',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/cltheenchantedcave2.html',
-        cover: 'https://codehs.com/uploads/b485021c3645851bdcbd9bf6490f764c',
-        storyNetwork: true
-      },
-      {
-        id: 'sn-tungtungobby',
-        name: 'Tung Tung Tung Sahor Obby (UGS) [Story Network]',
-        author: 'Story Network',
-        url: 'internal',
-        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@main/tungtungobby.html',
-        cover: 'https://codehs.com/uploads/463d34da040969be47e3c7d5ba38150c',
-        storyNetwork: true
-      },
+      { id: 'sn-deltarune', name: 'Deltarune (Story Network)', author: 'Camzzz', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzdeltarune.html', cover: 'https://codehs.com/uploads/f841ef2ba9002762ff9e22f22195cd75', storyNetwork: true },
+      { id: 'sn-balatro', name: 'Balatro (Story Network)', author: 'Camzzz', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzbalatro.html', cover: 'https://codehs.com/uploads/c8650a28ce2b5ae73ded93cff77895e2', storyNetwork: true },
+      { id: 'sn-badtimesim', name: 'Bad Time Simulator (Story Network)', author: 'Camzzz', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@0be67ab/camzzzbadtimesim.html', cover: 'https://codehs.com/uploads/19b9e206f30bf5a553de2fb3227d2d7f', storyNetwork: true },
+      { id: 'sn-basketrandom', name: 'Basket Random (Story Network)', author: 'Camzzz', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@ca55311/camzzzbasketrandom.html', cover: 'https://codehs.com/uploads/221507e0b9f72439c82592edb064afc7', storyNetwork: true },
+      { id: 'sn-polytrack', name: 'Polytrack (Story Network)', author: 'Camzzz', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzpolytrack.html', cover: 'https://codehs.com/uploads/ac85f0bc0cd4678847805c84b3e24a15', storyNetwork: true },
+      { id: 'sn-inscryption', name: 'Inscryption (Story Network)', author: 'Camzzz', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzinscryption.html', cover: 'https://codehs.com/uploads/d01c8f5f6e6d71178243e377c6db7f9f', storyNetwork: true },
+      { id: 'sn-undertale', name: 'Undertale (Story Network)', author: 'Camzzz', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@23bc89f/camzzzundertale.html', cover: 'https://codehs.com/uploads/47d4b4fa8f463b2f9159033576422044', storyNetwork: true },
+      { id: 'sn-amazingrope', name: 'Amazing Rope Police (Diesmos)', author: 'Diesmos', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/camzzzropepolice.html', cover: 'https://codehs.com/uploads/ab141f977b811925f0675b921d903cf2', storyNetwork: true },
+      { id: 'sn-undertale10th', name: 'Undertale 10th Anniversary (StoryNetwork)', author: 'StoryNetwork', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/undertale-10th/index.html', cover: 'https://codehs.com/uploads/04543ba502de51476d4f3856bed3786c', storyNetwork: true },
+      { id: 'sn-poke20in1', name: 'Pokemon 20 in 1 (Story Network)', author: 'Story Network', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@5d0e7b0/camzzzpoke20.html', cover: 'https://codehs.com/uploads/7e46bba993de209841743d50fb90d39e', storyNetwork: true },
+      { id: 'sn-papermario', name: 'Paper Mario (UGS) [Story Network]', author: 'Story Network', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/clpapermario.html', cover: 'https://codehs.com/uploads/40f10895bcd14c3d26c81eb28f65b310', storyNetwork: true },
+      { id: 'sn-enchantedcave2', name: 'Enchanted Cave 2 (UGS) [Story Network]', author: 'Story Network', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/cltheenchantedcave2.html', cover: 'https://codehs.com/uploads/b485021c3645851bdcbd9bf6490f764c', storyNetwork: true },
+      { id: 'sn-tungtungobby', name: 'Tung Tung Tung Sahor Obby (UGS) [Story Network]', author: 'Story Network', url: 'internal', fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@main/tungtungobby.html', cover: 'https://codehs.com/uploads/463d34da040969be47e3c7d5ba38150c', storyNetwork: true }
     ];
 
     async function listZones() {
       try {
         const response = await fetch(zonesURL + "?t=" + Date.now());
         const json = await response.json();
-
         zones = [...STORY_NETWORK_GAMES, ...json.filter(z => !isBlocked(z.name))];
-
         await fetchPopularity();
         sortZones();
+        updateCategoryBadges();
         updateRecentlyPlayed();
 
         const search = new URLSearchParams(window.location.search);
@@ -1764,12 +1721,7 @@ function injectPerformanceSetting() {
                   closeBtn.onclick = () => popup.remove();
                   popup.appendChild(closeBtn);
                   document.body.appendChild(popup);
-                  
-                  
-
-                  injectPerformanceSetting();
                   applyPerformanceMode();
-					
                 }).catch(err => alert("Failed to load zone: " + err));
               }
             } else {
@@ -1805,6 +1757,36 @@ function injectPerformanceSetting() {
       updateFavorites();
     }
 
+    /* ================= CATEGORY BADGE COUNTS ================= */
+    function getCategoryZones(category) {
+      if (category === 'all') return zones.filter(z => !isBlocked(z.name));
+      if (category === 'story-network') return zones.filter(z => z.storyNetwork && !isBlocked(z.name));
+      if (category === 'popular') return zones.filter(z => !isBlocked(z.name) && isPopular(z.name));
+      if (category === 'random') return zones.filter(z => !isBlocked(z.name) && z.name.toLowerCase().includes('random'));
+      if (category === 'fnf') return zones.filter(z => !isBlocked(z.name) && (z.name.toLowerCase().includes('fnf') || z.name.toLowerCase().includes('friday night funkin')));
+      if (category === 'fnaf') return zones.filter(z => !isBlocked(z.name) && (z.name.toLowerCase().includes('fnaf') || z.name.toLowerCase().includes('five nights at')));
+      if (category === 'minecraft') return zones.filter(z => !isBlocked(z.name) && z.name.toLowerCase().includes('minecraft'));
+      if (category === 'toby-fox') {
+        const tobyKeywords = ['undertale', 'deltarune', 'underwheels', 'deltatraveler', 'bad monday simulator', 'bad time simulator', 'scampton the great', 'undertale yellow', 'worst time simulator'];
+        const fnfKeywords = ['fnf', 'friday night funkin'];
+        return zones.filter(z => {
+          if (isBlocked(z.name)) return false;
+          const name = z.name.toLowerCase();
+          if (fnfKeywords.some(k => name.includes(k))) return false;
+          return tobyKeywords.some(k => name.includes(k));
+        });
+      }
+      return [];
+    }
+
+    function updateCategoryBadges() {
+      const cats = ['all','popular','story-network','random','fnf','fnaf','minecraft','toby-fox'];
+      cats.forEach(cat => {
+        const el = document.getElementById('count-' + cat);
+        if (el) el.textContent = getCategoryZones(cat).length;
+      });
+    }
+
     function displayZones(zonesToShow) {
       container.innerHTML = "";
       zonesToShow
@@ -1813,12 +1795,13 @@ function injectPerformanceSetting() {
           const card = createZoneCard(file, "normal");
           container.appendChild(card);
         });
-      if (container.innerHTML === "") {
+      const count = container.querySelectorAll('.zone-item').length;
+      if (count === 0) {
         container.innerHTML = "No zones found.";
       } else {
-        document.getElementById("allZonesWrapper")
-          .querySelector("summary")
-          .textContent = `All Games (${container.querySelectorAll('.zone-item').length})`;
+        const summaryEl = document.getElementById("allZonesWrapper").querySelector("summary");
+        // FIX #3: update count accurately
+        summaryEl.textContent = `All Games (${count})`;
       }
     }
 
@@ -1827,7 +1810,6 @@ function injectPerformanceSetting() {
       zoneItem.className = "zone-item";
       zoneItem.onclick = () => openZone(file);
 
-      // Show favorite star on all modes (including recent)
       const star = document.createElement("div");
       star.className = "favorite-star";
       star.innerHTML = `<svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"></polygon></svg>`;
@@ -1865,7 +1847,6 @@ function injectPerformanceSetting() {
       if (userPlays > 0) {
         const countSpan = document.createElement("span");
         countSpan.className = "play-count";
-        // Small play icon SVG inline
         countSpan.innerHTML = `<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>Played ${userPlays} time${userPlays===1?'':'s'}`;
         btn.appendChild(countSpan);
       }
@@ -1888,6 +1869,7 @@ function injectPerformanceSetting() {
       return zoneItem;
     }
 
+    // FIX #3: update search summary count
     function filterZones() {
       const query = searchBar.value.toLowerCase();
       const favoritesSection = document.getElementById('favoriteZonesWrapper');
@@ -1895,16 +1877,20 @@ function injectPerformanceSetting() {
       const dividers = document.querySelectorAll('main > hr');
 
       if (query.length > 0) {
-        // While searching: filter within the current category
         favoritesSection.style.display = 'none';
         recentSection.style.display = 'none';
         dividers.forEach(hr => hr.style.display = 'none');
         const filtered = zones.filter(z => z.name.toLowerCase().includes(query) && !isBlocked(z.name));
-        displayZones(filtered);
-      } else {
-        // Search cleared: restore the active category view
+        container.innerHTML = "";
+        filtered.forEach(file => {
+          const card = createZoneCard(file, "normal");
+          container.appendChild(card);
+        });
+        const count = filtered.filter(z => !isBlocked(z.name)).length;
+        document.getElementById("allZonesWrapper").querySelector("summary").textContent =
+          `Search Results (${count})`;
+        } else {
         filterByCategory(currentCategory, null);
-        // Re-apply active class to the correct button
         document.querySelectorAll('.category-btn').forEach(btn => {
           const onclick = btn.getAttribute('onclick') || '';
           if (onclick.includes("'" + currentCategory + "'")) {
@@ -1912,6 +1898,14 @@ function injectPerformanceSetting() {
           }
         });
       }
+    }
+
+    /* ================= SURPRISE ME ================= */
+    function surpriseMe() {
+      const available = zones.filter(z => !isBlocked(z.name));
+      if (available.length === 0) return;
+      const picked = available[Math.floor(Math.random() * available.length)];
+      openZone(picked);
     }
 
     function openZone(file) {
@@ -1922,7 +1916,6 @@ function injectPerformanceSetting() {
         return;
       }
       document.getElementById('zoneName').textContent = "Loading...";
-      // Always create a fresh iframe (fixes the "second game won't load" bug)
       if (zoneFrame) { try { zoneViewer.removeChild(zoneFrame); } catch(e) {} }
       zoneFrame = document.createElement("iframe");
       zoneFrame.id = "zoneFrame";
@@ -2013,6 +2006,16 @@ function injectPerformanceSetting() {
         location.reload();
       };
       reader.readAsText(file);
+    }
+
+    // FIX #5: Reset all data
+    function confirmResetData() {
+      if (confirm("This will clear ALL your data — favorites, recents, themes, settings. Are you sure?")) {
+        if (confirm("Really sure? This cannot be undone.")) {
+          localStorage.clear();
+          location.reload();
+        }
+      }
     }
 
     function cloakIcon(url) {
@@ -2119,9 +2122,44 @@ function injectPerformanceSetting() {
       document.getElementById(tab + '-panel').classList.add('active');
     }
 
+    // FIX #4: Site Settings (card size + performance mode) — own popup section
+    function showSiteSettings() {
+      closePopup();
+      document.getElementById('popupTitle').textContent = 'Site Settings';
+      document.getElementById('popupBody').innerHTML = `
+        <p style="font-size:0.8rem; opacity:0.6; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:1rem;">Display</p>
+
+        <div class="setting-row">
+          <div class="setting-row-label">
+            <span>Card Size</span>
+            <small>Controls how big game cards appear</small>
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <button onclick="applyCardSize('compact'); document.querySelectorAll('.card-size-btn').forEach(b=>b.style.opacity='0.5'); this.style.opacity='1';" class="card-size-btn" style="padding:0.4rem 0.8rem; font-size:0.8rem; border-radius:9999px; margin:0; width:auto; opacity:${cardSize==='compact'?'1':'0.5'};">Compact</button>
+            <button onclick="applyCardSize('default'); document.querySelectorAll('.card-size-btn').forEach(b=>b.style.opacity='0.5'); this.style.opacity='1';" class="card-size-btn" style="padding:0.4rem 0.8rem; font-size:0.8rem; border-radius:9999px; margin:0; width:auto; opacity:${cardSize==='default'?'1':'0.5'};">Default</button>
+            <button onclick="applyCardSize('large'); document.querySelectorAll('.card-size-btn').forEach(b=>b.style.opacity='0.5'); this.style.opacity='1';" class="card-size-btn" style="padding:0.4rem 0.8rem; font-size:0.8rem; border-radius:9999px; margin:0; width:auto; opacity:${cardSize==='large'?'1':'0.5'};">Large</button>
+          </div>
+        </div>
+
+        <p style="font-size:0.8rem; opacity:0.6; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin:1.2rem 0 0.75rem;">Performance</p>
+
+        <div class="setting-row">
+          <div class="setting-row-label">
+            <span>Performance Mode</span>
+            <small>Disables animations & effects for smoother experience</small>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" class="perf-toggle-input" ${performanceMode ? 'checked' : ''} onchange="togglePerformanceMode()">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      `;
+      document.getElementById('popupOverlay').style.display = 'flex';
+    }
+
     document.getElementById('settings').addEventListener('click', () => {
       document.getElementById('popupTitle').textContent = "Settings";
-	document.getElementById('popupBody').innerHTML = `
+      document.getElementById('popupBody').innerHTML = `
         <button onclick="showColorSettings()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
           Appearance
@@ -2129,6 +2167,10 @@ function injectPerformanceSetting() {
         <button onclick="showNotifSettings()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
           Notification Settings
+        </button>
+        <button onclick="showSiteSettings()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Site Settings
         </button>
         <hr style="border-color:var(--input-border); margin: 0.5rem 0;">
         <p style="font-size:0.8rem; opacity:0.6; margin:0.5rem 0 0.25rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Utilities</p>
@@ -2141,9 +2183,13 @@ function injectPerformanceSetting() {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
             Export Data
           </button>
-          <button onclick="document.getElementById('importData').click()" style="padding:0.6rem 0.8rem; font-size:0.85rem; border-radius:12px; grid-column: 1 / -1; width: 50%; margin: 0 auto;">
+          <button onclick="document.getElementById('importData').click()" style="padding:0.6rem 0.8rem; font-size:0.85rem; border-radius:12px;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Import Data
+          </button>
+          <button onclick="confirmResetData()" style="padding:0.6rem 0.8rem; font-size:0.85rem; border-radius:12px; background:rgba(255,60,60,0.25); border:1px solid rgba(255,60,60,0.4);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+            Reset Data
           </button>
         </div>
         <hr style="border-color:var(--input-border); margin: 1rem 0 0.5rem;">
@@ -2216,13 +2262,10 @@ function injectPerformanceSetting() {
         .innerHTML = `Favorites (${favs.length})`;
     }
 
-    // ============ CATEGORY FUNCTIONS ============
     function toggleCategoryNav() {
       document.getElementById('categoryNavWrapper').classList.toggle('collapsed');
     }
 
-    // Curated popular game names
-    // Popular tab: exact name matches only (case-insensitive)
     const POPULAR_GAMES = [
       'deltarune', 'balatro', 'scampton the great', 'bad time simulator (story network)',
       'rocket goal.io', 'bacon may die', 'basket random (story network)', 'cookie clicker',
@@ -2256,38 +2299,9 @@ function injectPerformanceSetting() {
         dividers.forEach(hr => hr.style.display = 'none');
       }
 
-      let filteredZones = [];
-
-      if (category === 'all') {
-        filteredZones = zones.filter(z => !isBlocked(z.name));
-      } else if (category === 'story-network') {
-        filteredZones = zones.filter(z => z.storyNetwork && !isBlocked(z.name));
-      } else if (category === 'popular') {
-        filteredZones = zones.filter(z => !isBlocked(z.name) && isPopular(z.name));
-      } else if (category === 'random') {
-        filteredZones = zones.filter(z => !isBlocked(z.name) && z.name.toLowerCase().includes('random'));
-      } else if (category === 'fnf') {
-        filteredZones = zones.filter(z => !isBlocked(z.name) &&
-          (z.name.toLowerCase().includes('fnf') || z.name.toLowerCase().includes('friday night funkin')));
-      } else if (category === 'fnaf') {
-        filteredZones = zones.filter(z => !isBlocked(z.name) &&
-          (z.name.toLowerCase().includes('fnaf') || z.name.toLowerCase().includes('five nights at')));
-      } else if (category === 'minecraft') {
-        filteredZones = zones.filter(z => !isBlocked(z.name) &&
-          z.name.toLowerCase().includes('minecraft'));
-      } else if (category === 'toby-fox') {
-        const tobyKeywords = ['undertale', 'deltarune', 'underwheels', 'deltatraveler', 'bad monday simulator', 'bad time simulator', 'scampton the great', 'undertale yellow', 'worst time simulator'];
-        const fnfKeywords = ['fnf', 'friday night funkin'];
-        filteredZones = zones.filter(z => {
-          if (isBlocked(z.name)) return false;
-          const name = z.name.toLowerCase();
-          const isFNF = fnfKeywords.some(k => name.includes(k));
-          if (isFNF) return false;
-          return tobyKeywords.some(k => name.includes(k));
-        });
-      }
-
+      const filteredZones = getCategoryZones(category);
       displayZones(filteredZones);
+
       const summaryText = {
         'all': 'All Games', 'story-network': 'Story Network', 'popular': 'Popular',
         'random': 'Random', 'fnf': 'FNF', 'fnaf': 'FNAF', 'minecraft': 'Minecraft', 'toby-fox': 'Toby Fox'
@@ -2325,8 +2339,8 @@ function injectPerformanceSetting() {
     }
 
     function renderMainBanners() {
-      const container = document.getElementById('notifications-banner-container');
-      container.innerHTML = '';
+      const bannerContainer = document.getElementById('notifications-banner-container');
+      bannerContainer.innerHTML = '';
       const settings = getNotifSettings();
       if (!settings.showOnMain) { updateNotifDot(); return; }
       const dismissed = getDismissed();
@@ -2342,7 +2356,7 @@ function injectPerformanceSetting() {
           <button onclick="dismissNotif('${n.id}'); this.closest('div').remove(); updateNotifDot();" style="background:rgba(255,255,255,0.2);border:none;color:white;padding:0.5rem 1rem;border-radius:20px;cursor:pointer;font-weight:700;white-space:nowrap;">
             Got it!
           </button>`;
-        container.appendChild(div);
+        bannerContainer.appendChild(div);
       });
       updateNotifDot();
     }
@@ -2386,45 +2400,29 @@ function injectPerformanceSetting() {
       document.getElementById('mainContent').style.display = 'block';
     }
 
+    // FIX #1: Fixed showNotifSettings — removed duplicate row, clean single toggle
     function showNotifSettings() {
       const s = getNotifSettings();
       document.getElementById('popupTitle').textContent = 'Notification Settings';
       document.getElementById('popupBody').innerHTML = `
         <p style="opacity:0.8;font-size:0.9rem;">Notifications always appear in the notification tab. Control whether they also show on the main page.</p>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding:1rem;background:var(--input-bg);border-radius:12px;border:1px solid var(--input-border);">
-          <span style="font-weight:700;">Show on Main Page</span>
-</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem;padding:1rem;background:var(--input-bg);border-radius:12px;border:1px solid var(--input-border);">
-          <span style="font-weight:700;">Show on Main Page</span>
-          <input type="checkbox" id="notifMainToggle" ${s.showOnMain ? 'checked' : ''} onchange="saveNotifSettings({showOnMain:this.checked}); renderMainBanners();" style="width:20px;height:20px;cursor:pointer;">
+        <div class="setting-row" style="margin-top:1rem;">
+          <div class="setting-row-label">
+            <span>Show on Main Page</span>
+            <small>Display active notifications as banners on the home screen</small>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" ${s.showOnMain ? 'checked' : ''} onchange="saveNotifSettings({showOnMain:this.checked}); renderMainBanners();">
+            <span class="toggle-slider"></span>
+          </label>
         </div>
-      </div> <h3 style="margin-top:2rem; margin-bottom:1rem; border-bottom:1px solid var(--input-border); padding-bottom:0.5rem;">Site Settings</h3>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:1rem;background:var(--input-bg);border-radius:12px;border:1px solid var(--input-border);">
-        <div>
-          <span style="font-weight:700; display:block;">Performance Mode</span>
-          <small style="opacity:0.7; font-size:0.8rem;">Speeds up the site by removing animations and effects.</small>
-        </div>
-        <input type="checkbox" id="perfToggle" ${document.body.classList.contains('performance-mode') ? 'checked' : ''} onchange="togglePerformanceMode()" style="width:20px;height:20px;cursor:pointer;">
-      </div>
-    `;
+      `;
       document.getElementById('popupOverlay').style.display = 'flex';
     }
 
     renderMainBanners();
 
-    // --- PERFORMANCE MODE ENGINE e ---
-    window.togglePerformanceMode = function() {
-      const isEnabled = document.body.classList.toggle('performance-mode');
-      localStorage.setItem('perfMode', isEnabled);
-      const toggle = document.getElementById('perfToggle');
-      if (toggle) toggle.checked = isEnabled;
-    };
-
-    if (localStorage.getItem('perfMode') === 'true') {
-      document.body.classList.add('performance-mode');
-    }
-
-    // --- BLOCKED DOMAINS FILTER ---
+    /* ---- BLOCKED DOMAINS FILTER ---- */
     const schoolList = ["deledao","goguardian","lightspeed","linewize","securly",".edu/"];
     function isBlockedDomain(url) {
       try {
@@ -2444,7 +2442,7 @@ function injectPerformanceSetting() {
     };
     HTMLCanvasElement.prototype.toDataURL = function() { return ""; };
 
-    // Initialize Site Features
+    // Initialize
     loadSavedTheme();
     listZones();
   </script>
