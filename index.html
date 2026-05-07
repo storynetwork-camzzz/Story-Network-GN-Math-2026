@@ -957,6 +957,54 @@
       display: inline-flex; align-items: center; gap: 0.4rem;
     }
 
+	/* ================= PERFORMANCE MODE ================= */
+
+.performance-mode *,
+.performance-mode *::before,
+.performance-mode *::after {
+    animation: none !important;
+    transition: none !important;
+    backdrop-filter: none !important;
+    filter: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    scroll-behavior: auto !important;
+}
+
+.performance-mode .zone-item:hover {
+    transform: none !important;
+}
+
+.performance-mode img {
+    image-rendering: optimizeSpeed !important;
+}
+
+.performance-mode iframe {
+    will-change: auto !important;
+}
+
+.performance-mode .logo:hover,
+.performance-mode .logo:hover .logo-img {
+    transform: none !important;
+    filter: none !important;
+}
+
+.performance-setting {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.performance-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+    font-weight: 700;
+}
+
     @media (max-width: 768px) {
       .header-content { grid-template-columns: auto 1fr auto; gap: 0.5rem; }
       .search-container { width: 100%; }
@@ -1130,6 +1178,118 @@
 <input type="file" id="importData" style="display:none;" onchange="loadData(event)">
 
   <script>
+
+	/* ================= PERFORMANCE MODE ================= */
+
+let performanceMode =
+localStorage.getItem('performanceMode') === 'true';
+
+function applyPerformanceMode() {
+
+    document.body.classList.toggle(
+        'performance-mode',
+        performanceMode
+    );
+
+    document.querySelectorAll('img').forEach(img => {
+
+        if (performanceMode) {
+
+            img.loading = 'lazy';
+            img.decoding = 'async';
+
+        } else {
+
+            img.loading = 'eager';
+            img.decoding = 'auto';
+        }
+    });
+
+    document.querySelectorAll('video').forEach(video => {
+
+        if (performanceMode) {
+            video.pause();
+        }
+    });
+
+    if (performanceMode) {
+
+        document.querySelectorAll(
+            '.particle, .particles, .background-effect'
+        ).forEach(el => {
+            el.remove();
+        });
+    }
+}
+
+function injectPerformanceSetting() {
+
+    const popupBody =
+    document.getElementById('popupBody');
+
+    if (
+        !popupBody ||
+        document.getElementById(
+            'performance-mode-setting'
+        )
+    ) return;
+
+    const wrapper =
+    document.createElement('div');
+
+    wrapper.id =
+    'performance-mode-setting';
+
+    wrapper.className =
+    'performance-setting';
+
+    wrapper.innerHTML = `
+        <h3>Performance Mode</h3>
+
+        <p style="
+            opacity:0.8;
+            margin-bottom:12px;
+        ">
+            Disables animations and effects
+            for better FPS on slower devices.
+        </p>
+
+        <label class="performance-toggle">
+            <input
+                type="checkbox"
+                id="performanceToggle"
+            >
+
+            Enable Performance Mode
+        </label>
+    `;
+
+    popupBody.appendChild(wrapper);
+
+    const toggle =
+    document.getElementById(
+        'performanceToggle'
+    );
+
+    toggle.checked = performanceMode;
+
+    toggle.addEventListener(
+        'change',
+        () => {
+
+            performanceMode =
+            toggle.checked;
+
+            localStorage.setItem(
+                'performanceMode',
+                performanceMode
+            );
+
+            applyPerformanceMode();
+        }
+    );
+}	
+
     const container = document.getElementById('container');
     const zoneViewer = document.getElementById('zoneViewer');
     let zoneFrame = document.getElementById('zoneFrame');
@@ -1541,7 +1701,34 @@
         fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@5d0e7b0/camzzzpoke20.html',
         cover: 'https://codehs.com/uploads/7e46bba993de209841743d50fb90d39e',
         storyNetwork: true
-      }
+      },
+      {
+        id: 'sn-papermario',
+        name: 'Paper Mario (UGS) [Story Network]',
+        author: 'Story Network',
+        url: 'internal',
+        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/clpapermario.html',
+        cover: 'https://codehs.com/uploads/40f10895bcd14c3d26c81eb28f65b310',
+        storyNetwork: true
+      },
+      {
+        id: 'sn-enchantedcave2',
+        name: 'Enchanted Cave 2 (UGS) [Story Network]',
+        author: 'Story Network',
+        url: 'internal',
+        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg/cltheenchantedcave2.html',
+        cover: 'https://codehs.com/uploads/b485021c3645851bdcbd9bf6490f764c',
+        storyNetwork: true
+      },
+      {
+        id: 'sn-tungtungobby',
+        name: 'Tung Tung Tung Sahor Obby (UGS) [Story Network]',
+        author: 'Story Network',
+        url: 'internal',
+        fetchUrl: 'https://cdn.jsdelivr.net/gh/storynetwork-camzzz/rg@main/tungtungobby.html',
+        cover: 'https://codehs.com/uploads/463d34da040969be47e3c7d5ba38150c',
+        storyNetwork: true
+      },
     ];
 
     async function listZones() {
@@ -1577,6 +1764,12 @@
                   closeBtn.onclick = () => popup.remove();
                   popup.appendChild(closeBtn);
                   document.body.appendChild(popup);
+                  
+                  
+
+                  injectPerformanceSetting();
+                  applyPerformanceMode();
+					
                 }).catch(err => alert("Failed to load zone: " + err));
               }
             } else {
@@ -2200,37 +2393,58 @@
         <p style="opacity:0.8;font-size:0.9rem;">Notifications always appear in the notification tab. Control whether they also show on the main page.</p>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding:1rem;background:var(--input-bg);border-radius:12px;border:1px solid var(--input-border);">
           <span style="font-weight:700;">Show on Main Page</span>
+</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem;padding:1rem;background:var(--input-bg);border-radius:12px;border:1px solid var(--input-border);">
+          <span style="font-weight:700;">Show on Main Page</span>
           <input type="checkbox" id="notifMainToggle" ${s.showOnMain ? 'checked' : ''} onchange="saveNotifSettings({showOnMain:this.checked}); renderMainBanners();" style="width:20px;height:20px;cursor:pointer;">
         </div>
-      `;
+      </div> <h3 style="margin-top:2rem; margin-bottom:1rem; border-bottom:1px solid var(--input-border); padding-bottom:0.5rem;">Site Settings</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:1rem;background:var(--input-bg);border-radius:12px;border:1px solid var(--input-border);">
+        <div>
+          <span style="font-weight:700; display:block;">Performance Mode</span>
+          <small style="opacity:0.7; font-size:0.8rem;">Speeds up the site by removing animations and effects.</small>
+        </div>
+        <input type="checkbox" id="perfToggle" ${document.body.classList.contains('performance-mode') ? 'checked' : ''} onchange="togglePerformanceMode()" style="width:20px;height:20px;cursor:pointer;">
+      </div>
+    `;
       document.getElementById('popupOverlay').style.display = 'flex';
     }
 
     renderMainBanners();
 
-    // Blocked domains filter
-    const schoolList = ["deledao","goguardian","lightspeed","linewize","securly",".edu/"];
-function isBlockedDomain(url) {
-  try {
-    const domain = new URL(url, location.origin).hostname + "/";
-    return schoolList.some(s => domain.includes(s));
-  } catch (e) {
-    return false; // if URL is unparseable, don't block it
-  }
-}
-const originalFetch = window.fetch;
-window.fetch = function(url, options) {
-  if (typeof url === 'string' && isBlockedDomain(url)) return Promise.reject(new Error("blocked"));
-  return originalFetch.apply(this, arguments);
-};
-const originalOpen = XMLHttpRequest.prototype.open;
-XMLHttpRequest.prototype.open = function(method, url) {
-  if (typeof url === 'string' && isBlockedDomain(url)) return;
-  return originalOpen.apply(this, arguments);
-};
-HTMLCanvasElement.prototype.toDataURL = function() { return ""; };
+    // --- PERFORMANCE MODE ENGINE ---
+    window.togglePerformanceMode = function() {
+      const isEnabled = document.body.classList.toggle('performance-mode');
+      localStorage.setItem('perfMode', isEnabled);
+      const toggle = document.getElementById('perfToggle');
+      if (toggle) toggle.checked = isEnabled;
+    };
 
-    // Initialize
+    if (localStorage.getItem('perfMode') === 'true') {
+      document.body.classList.add('performance-mode');
+    }
+
+    // --- BLOCKED DOMAINS FILTER ---
+    const schoolList = ["deledao","goguardian","lightspeed","linewize","securly",".edu/"];
+    function isBlockedDomain(url) {
+      try {
+        const domain = new URL(url, location.origin).hostname + "/";
+        return schoolList.some(s => domain.includes(s));
+      } catch (e) { return false; }
+    }
+    const originalFetch = window.fetch;
+    window.fetch = function(url, options) {
+      if (typeof url === 'string' && isBlockedDomain(url)) return Promise.reject(new Error("blocked"));
+      return originalFetch.apply(this, arguments);
+    };
+    const originalOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(method, url) {
+      if (typeof url === 'string' && isBlockedDomain(url)) return;
+      return originalOpen.apply(this, arguments);
+    };
+    HTMLCanvasElement.prototype.toDataURL = function() { return ""; };
+
+    // Initialize Site Features
     loadSavedTheme();
     listZones();
   </script>
